@@ -33,7 +33,8 @@ Este projeto tem como objetivo fornecer uma ferramenta simples e eficaz para con
 ## Tecnologias Utilizadas
 * **Java:** Linguagem de programação utilizada para desenvolver o projeto.
 * **Exchange Rate API:** API utilizada para obter as taxas de câmbio.
-* **Gson:** Biblioteca utilizada para converter JSON para objetos Java.
+* **Gson:** Biblioteca utilizada para converter JSON em Map.
+* **JsonObject:** Biblioteca utilizada para converter JSON em objeto Java. 
 * **HttpClient:** Biblioteca utilizada para fazer requisições HTTP para a API.
 * **LocalDateTime:** Classe para obter a data e horário local.
 * **FileReader:** Classe para ler o arquivo .txt.
@@ -51,11 +52,17 @@ Este projeto tem como objetivo fornecer uma ferramenta simples e eficaz para con
 5. *Siga as Instruções que aparece no console.*
 
 * <p>Abaixo segue uma imagem da tela do console que solicita que o usuário escolha a forma como pretende realizar a conversão de um valor entre duas moedas. Existe apenas três opções e o usuário só avança se for escolhido as opções sugeridas.</p>
-![Introdução](https://github.com/user-attachments/assets/6b645ff1-7f11-4296-810e-78f43dde2c51)
-* <p>A imagem abaixo é o menu que contém as moedas disponíveis para conversão de valores. O usuário pode inserir o número correspondente da moeda, o nome ou o código para selecionar a moeda base e de destino.</p>
-![Menu de Opções](https://github.com/user-attachments/assets/bb0cb163-b86e-47e9-8084-1754958ad587)
+![Introdução](https://github.com/user-attachments/assets/53289d51-da3b-4cb7-982a-e76943c80b58)
+
+* <p>A imagem abaixo é o menu que contém as moedas pré-definidas disponíveis para conversão de valores. O usuário pode inserir o número correspondente da moeda, o nome ou o código para selecionar a moeda base e de destino. No caso em que o usuário seleciona o modo 2 de conversão, o usuário pode ter acesso a uma lista diferente da pré-definida para realizar suas conversões</p>
+![Da a opção do usuário esolher entre converter entre as moedas da lista pré-definida](https://github.com/user-attachments/assets/11aaf0a6-3ff2-4234-a77d-5aca08c4d852)
+
+* <p>A imagem abaixo mostra um recorte da lista ampliada de código de moedas que o usuário tem acesso para realizar conversão de valores.</p>
+![Mostra a lista ampliada de código de moedas para conversão](https://github.com/user-attachments/assets/7b1c331b-3652-4e02-9894-c76138213f34)
+
 * <p>A imagem abaixo mostra a taxa entre as moedas selecionadas para converter o valor, o valor que o usuário quis converter e o valor convertido. Neste momento o usuário é convidado a escolher continuar podendo digitar S ou s, mas sairá caso contrário.</p>
 ![Fim da Conversão](https://github.com/user-attachments/assets/6097c3eb-6814-429f-8da2-0518d10988b7)
+
 * <p>A imagem abaixo mostra como o historio será mostrado no console.</p>
 ![Histórico de Conversões](https://github.com/user-attachments/assets/60190784-e133-45fb-81bf-1cff26c721cd)
 

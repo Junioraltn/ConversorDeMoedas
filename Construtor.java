@@ -1,11 +1,13 @@
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Construtor {
@@ -13,8 +15,8 @@ public class Construtor {
     public int introducao(int modo, Scanner ler) throws IOException {
         while (true) {
             System.out.println("Qual modalidade de Conversão deseja Utilizar?");
-            System.out.println("1) Just in Time - Consulta direta a taxa de câmbio mais recente, mas pode demorar!" +
-                    "2) Real Time - Realiza a conversão imediata através da ultima atualização feita!"+
+            System.out.println("1) Just in Time - Consulta direta a taxa de câmbio mais recente, mas pode demorar!\n" +
+                    "2) Real Time - Realiza a conversão imediata através da ultima atualização feita!\n"+
                     "3) Ver Histórico de Pesquisa");
             System.out.println("1, 2 ou 3?");
             modo = ler.nextInt();
@@ -33,7 +35,6 @@ public class Construtor {
                 reader.close();
                 System.out.println("=============================================================");
             }
-
         }
         return modo;
     }
@@ -52,16 +53,17 @@ public class Construtor {
                 "               ou seu código de identificação, exemplo: BRL\n");
 
     }
-    public TaxasDeConversao baseConversao(String json){
+    public Map<String, Double> baseConversao(String json){
         try {
-            Gson gson = new GsonBuilder().create();
             JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
-            JsonObject conversionRatesJson = jsonObject.getAsJsonObject("conversion_rates");
-            // Converte o objeto JsonObject para string JSON
-            String taxas = conversionRatesJson.toString();
+            String json2 = jsonObject.get("conversion_rates").toString();
+            Gson gson = new Gson();
+            // Define o tipo do Map
+            Type type = new TypeToken<Map<String, Double>>(){}.getType();
+            // Converte o JSON para Map
+            Map<String, Double> map = gson.fromJson(json2, type);
+            return map;
 
-            // Converte a string JSON para uma instância de TaxasDeConversao
-            return gson.fromJson(taxas, TaxasDeConversao.class);
         } catch (Exception e) {
             throw new RuntimeException("Não foi possivel converter o Jason: "+e);
         }
